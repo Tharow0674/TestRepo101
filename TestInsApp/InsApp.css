@@ -1,0 +1,24 @@
+body {
+    background-image: url("marble.jpg");
+    
+}
+
+.ins-app-header {
+    background-color: #cab4a6;
+    color: #655035;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    border: 1px solid #655035;
+    
+}
+
+.ins-app-body {
+    background-color: #f6efe9;
+    color: #655035;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    border-top: 0px solid #655035;
+    border-right: 1px solid #655035;
+    border-left: 1px solid #655035;
+    border-bottom: 1px solid #655035;    
+}
