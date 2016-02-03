@@ -1,0 +1,44 @@
+<!doctype html>
+<html ng-app="insApp">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="InsApp.js"></script>
+    <link rel="stylesheet" href="InsApp.css">
+  </head>
+  <body>
+    <div class="ins-app-header">
+        <h2>Benefits Prognosticator</h2>
+    </div>
+    <div class="ins-app-body" ng-controller="CoverageController as Family">
+      <form ng-submit="Family.AddMember()">
+        <input type="text" ng-model="Family.FirstName"  size="30" placeholder="First Name">
+        <input type="text" ng-model="Family.LastName"  size="30" placeholder="Last Name">
+		<select ng-model="Family.Type" ng-options="typ.Text for typ in DepType track by typ.Code">
+			<option value="">Select Benefit Type</option>
+			<option ng-repeat="typ in Family.DepTypes" value="{{typ.Code}}">{{typ.Text}}</option>
+		</select>
+		<input class="btn-primary" type="submit" value="add">
+      </form>
+      
+		<div>
+			<span class="ins-covg-cost-banr">Family Size: {{Family.Members.length}} Members</span>
+		</div>
+		<div>
+			<span>Base Monthly Salary:</span>
+			<span class="ins-covg-cost-mnthly">$2000</span>
+		</div>
+        <div ng-repeat="Member in Family.Members">
+          <span class="ins-covg-cost-member">{{Member.LastName}}, {{Member.FirstName}}</span>
+          <span class="ins-covg-cost-yrly">${{Member.YearlyExpense(Member)}}</span>
+          <span class="ins-covg-cost-mnthly">${{Member.MonthlyExpense(Member)}}</span>
+        </div>
+		<div>
+			<span class="ins-covg-cost-yrly">Final Take Home Pay:</span>
+			<span class="ins-covg-cost-mnthly">{{Member.MonthlyTakeHome()}}</span>
+		</div>
+      
+        [ <a href="" ng-click="Family.Commit()">Update Coverage...</a> ]
+
+    </div>
+  </body>
+</html>
